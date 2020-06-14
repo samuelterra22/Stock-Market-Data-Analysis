@@ -3,7 +3,9 @@ import plotly.io as pio
 import plotly.graph_objs as go
 import yfinance as yf
 
-df = yf.download("PETR4.SA", group_by="ticker", start="2020-01-01")  # end=date.today()
+market = "MEAL3.SA"
+
+df = yf.download(market, group_by="ticker", start="2020-01-01")  # end=date.today()
 
 pio.renderers.default = "iframe"
 
@@ -51,4 +53,27 @@ close = go.Scatter(
     opacity=0.8)
 
 data = [trace, MM_3, MM_7, MM_21]
-py.plot(data, filename='candlestick.html')
+
+layout = go.Layout(
+        title='Stock Market Data Analysis - ' + market,
+        yaxis=dict(
+            title='Stock market price',
+            titlefont=dict(
+                family='Courier New, monospace',
+                size=18,
+                color='#7f7f7f'
+            )
+        ),
+        xaxis=dict(
+            title='Date',
+            titlefont=dict(
+                family='Courier New, monospace',
+                size=18,
+                color='#7f7f7f'
+            )
+        )
+    )
+
+figure = {'data': data, 'layout': layout}
+
+py.plot(figure, filename='candlestick.html')
