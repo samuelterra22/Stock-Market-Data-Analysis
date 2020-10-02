@@ -6,7 +6,7 @@ multitasking==0.0.9
 numpy==1.19.2
 pandas==1.1.2
 pandas-datareader==0.9.0
-plotly==4.10.0
+plotly==4.11.0
 python-dateutil==2.8.1
 pytz==2020.1
 requests==2.24.0
